@@ -68,7 +68,7 @@ const Navbar = () => {
               'text-xl font-bold transition-colors duration-300',
               isScrolled ? 'text-black' : 'text-white'
             )}>
-              Tapia Mattar
+              Tapia Mattar & Asociados
             </span>
           </motion.a>
 

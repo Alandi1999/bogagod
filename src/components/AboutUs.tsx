@@ -121,7 +121,7 @@ const AboutUs = () => {
   }, [isLightboxOpen])
 
   return (
-    <section id="nosotros" className="py-20 bg-law-light">
+    <section id="nosotros" className="py-20 bg-law-light overflow-hidden">
       <div className="container mx-auto px-6">
         <SectionTitle
           title="Sobre Nosotros"
@@ -130,7 +130,7 @@ const AboutUs = () => {
 
         {/* Carousel */}
         <div 
-          className="relative max-w-5xl mx-auto"
+          className="relative max-w-5xl mx-auto overflow-hidden"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >

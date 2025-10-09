@@ -7,8 +7,8 @@
     @apply scroll-smooth;
   }
   
-  body {
-    @apply antialiased;
+  html, body {
+    @apply antialiased overflow-x-hidden;
   }
 }
 
