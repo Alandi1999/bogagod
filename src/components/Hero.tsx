@@ -35,7 +35,7 @@ const Hero = () => {
             className="flex justify-center mb-0"
           >
             <img 
-              src="/img/Logo_2.png" 
+              src="img/Logo_2.png" 
               alt="Estudio Tapia Mattar & Asociados" 
               className="h-48 md:h-80 w-auto"
             />

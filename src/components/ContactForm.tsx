@@ -15,14 +15,14 @@ const ContactForm = () => {
       mp: 'M.P. N° 4.667',
       title: 'Abogado | Escribano',
       phone: '3855182227',
-      image: '/img/Oscar_2.webp'
+      image: 'img/Oscar_2.webp'
     },
     {
       name: 'Agustín González Fiad',
       mp: 'M.P. N° 4.851',
       title: 'Abogado',
       phone: '385260426',
-      image: '/img/Agustin_2.webp'
+      image: 'img/Agustin_2.webp'
     }
   ]
 

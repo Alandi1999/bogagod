@@ -8,21 +8,21 @@ const AboutUs = () => {
 
   const slides = [
     {
-      image: '/img/Oscar_2.webp',
+      image: 'img/Oscar_2.webp',
       title: 'Oscar Tapia Mattar',
       subtitle: 'M.P. N° 4.667 | Abogado y Escribano',
       content: 'En Tapia Mattar & Asociados entendemos que cada situación legal merece un trato único y personalizado. Nuestro compromiso es acompañar a cada cliente con seriedad, dedicación y excelencia profesional, buscando siempre alcanzar la mejor solución posible.',
       year: 'Egresado 2022 - 2023'
     },
     {
-      image: '/img/Agustin_2.webp',
+      image: 'img/Agustin_2.webp',
       title: 'Agustín González Fiad',
       subtitle: 'M.P. N° 4.851 | Abogado',
       content: 'El estudio está conformado por profesionales formados en la Universidad Católica de Santiago del Estero. Nos distingue la responsabilidad, la transparencia y el trato cercano con cada persona que confía en nuestro trabajo.',
       year: 'Egresado 2023'
     },
     {
-      image: '/img/estudio_6.webp',
+      image: 'img/estudio_6.webp',
       title: 'Nuestro Compromiso',
       subtitle: 'Excelencia y Dedicación',
       content: 'Nos enfocamos en brindar soluciones prácticas y efectivas, priorizando siempre los intereses de nuestros clientes. Trabajamos con dedicación tanto en instancias de negociación como en el ámbito judicial. Con visión moderna y compromiso, ponemos nuestra experiencia al servicio de cada caso.',

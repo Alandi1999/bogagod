@@ -51,7 +51,7 @@ const Footer = () => {
           >
             <div className="mb-4">
               <img 
-                src="/img/Logo_2.png" 
+                src="img/Logo_2.png" 
                 alt="Estudio Tapia Mattar & Asociados" 
                 className="h-28 w-auto mb-0"
               />
