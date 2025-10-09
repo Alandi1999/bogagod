@@ -19,7 +19,7 @@ const SectionTitle = ({ title, subtitle, centered = true }: SectionTitleProps) =
         centered && 'text-center'
       )}
     >
-      <h2 className="text-4xl md:text-5xl font-bold text-law-navy mb-4">
+      <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
         {title}
       </h2>
       {subtitle && (

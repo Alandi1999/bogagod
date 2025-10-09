@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Scale, ChevronDown } from 'lucide-react'
+import { ChevronDown } from 'lucide-react'
 import Button from './ui/Button'
 
 const Hero = () => {
@@ -18,7 +18,7 @@ const Hero = () => {
   }
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-law-navy via-law-navy/95 to-law-dark overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-law-dark to-black overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 left-10 w-72 h-72 bg-law-gold rounded-full blur-3xl" />
@@ -27,27 +27,21 @@ const Hero = () => {
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
-          {/* Logo/Icon */}
+          {/* Logo */}
           <motion.div
-            initial={{ scale: 0, rotate: -180 }}
-            animate={{ scale: 1, rotate: 0 }}
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.8, type: 'spring' }}
-            className="flex justify-center mb-8"
+            className="flex justify-center mb-0"
           >
-            <div className="bg-law-gold/20 p-6 rounded-full backdrop-blur-sm">
-              <Scale className="w-16 h-16 text-law-gold" />
-            </div>
+            <img 
+              src="/img/Logo_2.png" 
+              alt="Estudio Tapia Mattar & Asociados" 
+              className="h-48 md:h-80 w-auto"
+            />
           </motion.div>
 
-          {/* Main Title */}
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl md:text-7xl font-bold text-white mb-6 text-balance"
-          >
-            Estudio Jurídico <span className="text-law-gold">BogaGod</span>
-          </motion.h1>
+         
 
           {/* Subtitle */}
           <motion.p
@@ -56,7 +50,7 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-xl md:text-2xl text-white/90 mb-4"
           >
-            Excelencia Legal a Su Servicio
+            Seriedad, Dedicación y Excelencia Profesional
           </motion.p>
 
           <motion.p
@@ -65,8 +59,8 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.5 }}
             className="text-lg text-white/80 mb-12 max-w-2xl mx-auto"
           >
-            Más de 20 años de experiencia brindando asesoría legal integral, 
-            comprometidos con la defensa de sus derechos y la búsqueda de soluciones efectivas
+            Acompañamiento jurídico integral con compromiso y transparencia, 
+            brindando soluciones prácticas y efectivas para cada caso
           </motion.p>
 
           {/* CTA Buttons */}
@@ -81,7 +75,7 @@ const Hero = () => {
               onClick={handleContactClick}
               aria-label="Contactar ahora"
             >
-              Consulta Gratuita
+              Consulta
             </Button>
             <Button 
               variant="outline"
@@ -92,33 +86,18 @@ const Hero = () => {
             </Button>
           </motion.div>
 
-          {/* Stats */}
+          {/* Location Badge */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.8 }}
-            className="mt-16 grid grid-cols-3 gap-8 max-w-2xl mx-auto"
+            className="mt-16 text-center"
           >
-            {[
-              { number: '20+', label: 'Años' },
-              { number: '1500+', label: 'Casos Exitosos' },
-              { number: '98%', label: 'Satisfacción' }
-            ].map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.9 + index * 0.1 }}
-                className="text-center"
-              >
-                <div className="text-3xl md:text-4xl font-bold text-law-gold mb-2">
-                  {stat.number}
-                </div>
-                <div className="text-white/80 text-sm md:text-base">
-                  {stat.label}
-                </div>
-              </motion.div>
-            ))}
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
+              <span className="text-white/90 text-sm md:text-base">
+                📍 Loreto, Santiago del Estero, Argentina
+              </span>
+            </div>
           </motion.div>
         </div>
       </div>

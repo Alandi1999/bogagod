@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Scale, Menu, X } from 'lucide-react'
+import { Menu, X, Scale } from 'lucide-react'
 import clsx from 'clsx'
 
 const Navbar = () => {
@@ -61,18 +61,18 @@ const Navbar = () => {
           >
             <div className={clsx(
               'p-2 rounded-lg transition-colors duration-300',
-              isScrolled ? 'bg-law-navy' : 'bg-law-gold'
+              isScrolled ? 'bg-black' : 'bg-law-gold'
             )}>
               <Scale className={clsx(
                 'w-6 h-6 transition-colors duration-300',
-                isScrolled ? 'text-law-gold' : 'text-law-navy'
+                isScrolled ? 'text-law-gold' : 'text-black'
               )} />
             </div>
             <span className={clsx(
               'text-xl font-bold transition-colors duration-300',
-              isScrolled ? 'text-law-navy' : 'text-white'
+              isScrolled ? 'text-black' : 'text-white'
             )}>
-              BogaGod
+              Tapia Mattar
             </span>
           </motion.a>
 
@@ -88,7 +88,7 @@ const Navbar = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className={clsx(
                   'font-medium transition-colors duration-300 hover:text-law-gold cursor-pointer',
-                  isScrolled ? 'text-law-navy' : 'text-white'
+                  isScrolled ? 'text-black' : 'text-white'
                 )}
               >
                 {link.name}
@@ -97,11 +97,11 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <button
+            <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className={clsx(
               'md:hidden p-2 rounded-lg transition-colors duration-300',
-              isScrolled ? 'text-law-navy' : 'text-white'
+              isScrolled ? 'text-black' : 'text-white'
             )}
             aria-label="Toggle menu"
           >
@@ -122,7 +122,7 @@ const Navbar = () => {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-white border-t border-law-navy/10"
+            className="md:hidden bg-white border-t border-black/10"
           >
             <div className="container mx-auto px-6 py-4 flex flex-col gap-4">
               {navLinks.map((link, index) => (
@@ -133,7 +133,7 @@ const Navbar = () => {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.3, delay: index * 0.05 }}
-                  className="text-law-navy font-medium hover:text-law-gold transition-colors duration-300 cursor-pointer"
+                  className="text-black font-medium hover:text-law-gold transition-colors duration-300 cursor-pointer"
                 >
                   {link.name}
                 </motion.a>

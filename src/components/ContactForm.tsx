@@ -1,70 +1,57 @@
-import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { useForm } from 'react-hook-form'
 import { 
   Mail, 
   Phone, 
   MapPin, 
-  Send, 
-  Clock,
-  CheckCircle,
-  AlertCircle
+  Clock
 } from 'lucide-react'
 import SectionTitle from './ui/SectionTitle'
-import Button from './ui/Button'
-
-interface FormData {
-  name: string
-  email: string
-  phone: string
-  subject: string
-  message: string
-}
-
-type SubmitStatus = 'idle' | 'success' | 'error'
+import Card from './ui/Card'
 
 const ContactForm = () => {
-  const { register, handleSubmit, formState: { errors }, reset } = useForm<FormData>()
-  const [submitStatus, setSubmitStatus] = useState<SubmitStatus>('idle')
-
-  const onSubmit = (data: FormData) => {
-    console.log('Form data:', data)
-    
-    // Simulate API call
-    setTimeout(() => {
-      setSubmitStatus('success')
-      reset()
-      
-      // Reset status after 5 seconds
-      setTimeout(() => {
-        setSubmitStatus('idle')
-      }, 5000)
-    }, 1000)
-  }
+  const lawyers = [
+    {
+      name: 'Oscar Tapia Mattar',
+      mp: 'M.P. N° 4.667',
+      title: 'Abogado | Escribano',
+      phone: '3855182227',
+      image: '/img/Oscar_2.webp'
+    },
+    {
+      name: 'Agustín González Fiad',
+      mp: 'M.P. N° 4.851',
+      title: 'Abogado',
+      phone: '385260426',
+      image: '/img/Agustin_2.webp'
+    }
+  ]
 
   const contactInfo = [
     {
       icon: Phone,
-      title: 'Teléfono',
-      value: '+34 912 345 678',
-      link: 'tel:+34912345678'
+      title: 'Teléfonos',
+      value: '385 5182227 / 385 260426',
+      link: 'tel:+543855182227'
     },
     {
       icon: Mail,
-      title: 'Email',
-      value: 'contacto@bogagod.com',
-      link: 'mailto:contacto@bogagod.com'
+      title: 'Emails',
+      value: 'oscartapiamattar@gmail.com',
+      value2: 'agugonfiad1999@gmail.com',
+      link: 'mailto:oscartapiamattar@gmail.com'
     },
     {
       icon: MapPin,
       title: 'Dirección',
-      value: 'Calle Principal 123, Madrid, España',
-      link: '#'
+      value: '9 de Julio 585',
+      value2: 'Loreto, Santiago del Estero, Argentina',
+      link: 'https://maps.app.goo.gl/EHocE5SQEdEb38tK6'
     },
     {
       icon: Clock,
       title: 'Horario',
-      value: 'Lun - Vie: 9:00 - 18:00',
+      value: 'Lunes a Viernes',
+      value2: '8:30 a 12:00 | 18:00 a 20:00',
       link: '#'
     }
   ]
@@ -74,7 +61,7 @@ const ContactForm = () => {
       <div className="container mx-auto px-6">
         <SectionTitle
           title="Contáctenos"
-          subtitle="Estamos aquí para ayudarle. Déjenos un mensaje y nos pondremos en contacto a la brevedad"
+          subtitle="Estamos aquí para ayudarle. Comuníquese directamente con nuestros profesionales"
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
@@ -85,7 +72,7 @@ const ContactForm = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="text-2xl font-bold text-law-navy mb-6">
+            <h3 className="text-2xl font-bold text-black mb-6">
               Información de Contacto
             </h3>
             
@@ -96,6 +83,8 @@ const ContactForm = () => {
                   <motion.a
                     key={index}
                     href={info.link}
+                    target={info.link.startsWith('http') ? '_blank' : undefined}
+                    rel={info.link.startsWith('http') ? 'noopener noreferrer' : undefined}
                     initial={{ opacity: 0, x: -30 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
@@ -103,197 +92,95 @@ const ContactForm = () => {
                     whileHover={{ x: 10 }}
                     className="flex items-start gap-4 group cursor-pointer"
                   >
-                    <div className="flex-shrink-0 w-12 h-12 bg-law-navy/10 rounded-lg flex items-center justify-center group-hover:bg-law-gold/20 transition-colors duration-300">
-                      <Icon className="w-6 h-6 text-law-navy group-hover:text-law-gold transition-colors duration-300" />
+                    <div className="flex-shrink-0 w-12 h-12 bg-black/10 rounded-lg flex items-center justify-center group-hover:bg-law-gold/20 transition-colors duration-300">
+                      <Icon className="w-6 h-6 text-black group-hover:text-law-gold transition-colors duration-300" />
                     </div>
                     <div>
-                      <p className="font-semibold text-law-navy mb-1">
+                      <p className="font-semibold text-black mb-1">
                         {info.title}
                       </p>
-                      <p className="text-law-dark/70">
-                        {info.value}
-                      </p>
+                      <p className="text-law-dark/70">{info.value}</p>
+                      {info.value2 && <p className="text-law-dark/70">{info.value2}</p>}
                     </div>
                   </motion.a>
                 )
               })}
             </div>
 
-            {/* Map placeholder */}
+            {/* Map */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="mt-8 h-64 bg-law-navy/10 rounded-xl overflow-hidden"
+              className="mt-8 h-64 rounded-xl overflow-hidden"
             >
-              <div className="w-full h-full flex items-center justify-center text-law-dark/50">
-                <MapPin className="w-12 h-12" />
-              </div>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3464.0739939896837!2d-64.18524212347475!3d-29.761666421997735!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x943d56be9fea55e5%3A0x9c4d0f7e5f5c6e5a!2s9%20de%20Julio%20585%2C%20Loreto%2C%20Santiago%20del%20Estero!5e0!3m2!1ses!2sar!4v1699999999999!5m2!1ses!2sar"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Ubicación del estudio"
+              />
             </motion.div>
           </motion.div>
 
-          {/* Contact Form */}
+          {/* Lawyers Cards */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            className="space-y-6"
           >
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-              {/* Name */}
-              <div>
-                <label htmlFor="name" className="block text-sm font-semibold text-law-navy mb-2">
-                  Nombre Completo *
-                </label>
-                <input
-                  id="name"
-                  type="text"
-                  {...register('name', { required: 'El nombre es requerido' })}
-                  className="w-full px-4 py-3 rounded-lg border border-law-navy/20 focus:border-law-gold focus:outline-none focus:ring-2 focus:ring-law-gold/20 transition-all duration-300"
-                  placeholder="Juan Pérez"
-                />
-                {errors.name && (
-                  <p className="mt-1 text-sm text-red-500 flex items-center gap-1">
-                    <AlertCircle className="w-4 h-4" />
-                    {errors.name.message}
-                  </p>
-                )}
-              </div>
+            <h3 className="text-2xl font-bold text-black mb-6">
+              Nuestros Profesionales
+            </h3>
 
-              {/* Email */}
-              <div>
-                <label htmlFor="email" className="block text-sm font-semibold text-law-navy mb-2">
-                  Email *
-                </label>
-                <input
-                  id="email"
-                  type="email"
-                  {...register('email', { 
-                    required: 'El email es requerido',
-                    pattern: {
-                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                      message: 'Email inválido'
-                    }
-                  })}
-                  className="w-full px-4 py-3 rounded-lg border border-law-navy/20 focus:border-law-gold focus:outline-none focus:ring-2 focus:ring-law-gold/20 transition-all duration-300"
-                  placeholder="juan@ejemplo.com"
-                />
-                {errors.email && (
-                  <p className="mt-1 text-sm text-red-500 flex items-center gap-1">
-                    <AlertCircle className="w-4 h-4" />
-                    {errors.email.message}
-                  </p>
-                )}
-              </div>
-
-              {/* Phone */}
-              <div>
-                <label htmlFor="phone" className="block text-sm font-semibold text-law-navy mb-2">
-                  Teléfono *
-                </label>
-                <input
-                  id="phone"
-                  type="tel"
-                  {...register('phone', { required: 'El teléfono es requerido' })}
-                  className="w-full px-4 py-3 rounded-lg border border-law-navy/20 focus:border-law-gold focus:outline-none focus:ring-2 focus:ring-law-gold/20 transition-all duration-300"
-                  placeholder="+34 912 345 678"
-                />
-                {errors.phone && (
-                  <p className="mt-1 text-sm text-red-500 flex items-center gap-1">
-                    <AlertCircle className="w-4 h-4" />
-                    {errors.phone.message}
-                  </p>
-                )}
-              </div>
-
-              {/* Subject */}
-              <div>
-                <label htmlFor="subject" className="block text-sm font-semibold text-law-navy mb-2">
-                  Asunto *
-                </label>
-                <select
-                  id="subject"
-                  {...register('subject', { required: 'Seleccione un asunto' })}
-                  className="w-full px-4 py-3 rounded-lg border border-law-navy/20 focus:border-law-gold focus:outline-none focus:ring-2 focus:ring-law-gold/20 transition-all duration-300"
-                >
-                  <option value="">Seleccione un área</option>
-                  <option value="laboral">Derecho Laboral</option>
-                  <option value="inmobiliario">Derecho Inmobiliario</option>
-                  <option value="familia">Derecho de Familia</option>
-                  <option value="comercial">Derecho Comercial</option>
-                  <option value="civil">Derecho Civil</option>
-                  <option value="penal">Derecho Penal</option>
-                  <option value="otro">Otro</option>
-                </select>
-                {errors.subject && (
-                  <p className="mt-1 text-sm text-red-500 flex items-center gap-1">
-                    <AlertCircle className="w-4 h-4" />
-                    {errors.subject.message}
-                  </p>
-                )}
-              </div>
-
-              {/* Message */}
-              <div>
-                <label htmlFor="message" className="block text-sm font-semibold text-law-navy mb-2">
-                  Mensaje *
-                </label>
-                <textarea
-                  id="message"
-                  rows={5}
-                  {...register('message', { 
-                    required: 'El mensaje es requerido',
-                    minLength: {
-                      value: 10,
-                      message: 'El mensaje debe tener al menos 10 caracteres'
-                    }
-                  })}
-                  className="w-full px-4 py-3 rounded-lg border border-law-navy/20 focus:border-law-gold focus:outline-none focus:ring-2 focus:ring-law-gold/20 transition-all duration-300 resize-none"
-                  placeholder="Cuéntenos sobre su caso..."
-                />
-                {errors.message && (
-                  <p className="mt-1 text-sm text-red-500 flex items-center gap-1">
-                    <AlertCircle className="w-4 h-4" />
-                    {errors.message.message}
-                  </p>
-                )}
-              </div>
-
-              {/* Submit Button */}
-              <Button 
-                type="submit" 
-                variant="primary" 
-                fullWidth
-                disabled={submitStatus === 'success'}
+            {lawyers.map((lawyer, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                {submitStatus === 'success' ? (
-                  <span className="flex items-center justify-center gap-2">
-                    <CheckCircle className="w-5 h-5" />
-                    Mensaje Enviado
-                  </span>
-                ) : (
-                  <span className="flex items-center justify-center gap-2">
-                    <Send className="w-5 h-5" />
-                    Enviar Mensaje
-                  </span>
-                )}
-              </Button>
-
-              {/* Success Message */}
-              {submitStatus === 'success' && (
-                <motion.div
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="bg-green-50 border border-green-200 rounded-lg p-4 flex items-center gap-3"
-                >
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
-                  <p className="text-green-800 text-sm">
-                    ¡Gracias por contactarnos! Responderemos a la brevedad.
-                  </p>
-                </motion.div>
-              )}
-            </form>
+                <Card className="overflow-hidden">
+                  <div className="flex flex-col md:flex-row gap-6">
+                    <div className="md:w-1/3">
+                      <img
+                        src={lawyer.image}
+                        alt={lawyer.name}
+                        className="w-full h-48 md:h-full object-cover rounded-lg"
+                      />
+                    </div>
+                    <div className="md:w-2/3 flex flex-col justify-between">
+                      <div>
+                        <h4 className="text-2xl font-bold text-black mb-1">
+                          {lawyer.name}
+                        </h4>
+                        <p className="text-law-gold font-semibold mb-2">{lawyer.mp}</p>
+                        <p className="text-law-dark/70 mb-4">{lawyer.title}</p>
+                      </div>
+                      <a
+                        href={`https://wa.me/54${lawyer.phone}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105"
+                      >
+                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                        </svg>
+                        Contactar por WhatsApp
+                      </a>
+                    </div>
+                  </div>
+                </Card>
+              </motion.div>
+            ))}
           </motion.div>
         </div>
       </div>

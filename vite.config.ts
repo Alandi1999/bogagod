@@ -4,10 +4,12 @@ import react from '@vitejs/plugin-react'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/bogagod/',
+  base: process.env.NODE_ENV === 'production' ? '/bogagod/' : '/',
   server: {
     port: 3000,
     open: true
-  }
+  },
+  publicDir: 'public',
+  assetsInclude: ['**/*.webp', '**/*.png']
 })
 

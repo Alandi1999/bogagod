@@ -44,7 +44,7 @@ const WhyChooseUs = () => {
   ]
 
   return (
-    <section id="ventajas" className="py-20 bg-law-navy relative overflow-hidden">
+    <section id="ventajas" className="py-20 bg-black relative overflow-hidden">
       {/* Decorative background */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-law-gold rounded-full blur-3xl" />
@@ -125,7 +125,7 @@ const WhyChooseUs = () => {
             ¿Listo para resolver su situación legal?
           </p>
           <p className="text-lg text-white/70 max-w-2xl mx-auto">
-            Contáctenos hoy para una consulta gratuita y descubra cómo podemos ayudarle.
+            Contáctenos hoy para una consulta y descubra cómo podemos ayudarle.
           </p>
         </motion.div>
       </div>

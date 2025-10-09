@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Scale, Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react'
+import { Mail, Phone, MapPin, Facebook, Instagram } from 'lucide-react'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
@@ -11,17 +11,16 @@ const Footer = () => {
     { name: 'Contacto', href: '#contacto' }
   ]
 
-  const legalLinks = [
-    { name: 'Política de Privacidad', href: '#' },
-    { name: 'Términos y Condiciones', href: '#' },
-    { name: 'Código de Ética', href: '#' }
+  const practiceAreas = [
+    { name: 'Derecho de Familia', href: '#areas' },
+    { name: 'Derecho Civil', href: '#areas' },
+    { name: 'Derecho Penal', href: '#areas' },
+    { name: 'Derecho Laboral', href: '#areas' }
   ]
 
   const socialLinks = [
-    { icon: Facebook, href: '#', label: 'Facebook' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Instagram, href: '#', label: 'Instagram' }
+    { icon: Facebook, href: 'https://www.facebook.com/share/1CNnWdqzf1/?mibextid=wwXIfr', label: 'Facebook' },
+    { icon: Instagram, href: 'https://www.instagram.com/estudiojuridicotapiamattar?igsh=MXBkaW5iZDUyMXpkcg==', label: 'Instagram' }
   ]
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -40,7 +39,7 @@ const Footer = () => {
   }
 
   return (
-    <footer className="bg-law-navy text-white">
+    <footer className="bg-black text-white">
       <div className="container mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Logo and Description */}
@@ -50,11 +49,12 @@ const Footer = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <div className="flex items-center gap-2 mb-4">
-              <div className="bg-law-gold p-2 rounded-lg">
-                <Scale className="w-6 h-6 text-law-navy" />
-              </div>
-              <span className="text-2xl font-bold">BogaGod</span>
+            <div className="mb-4">
+              <img 
+                src="/img/Logo_2.png" 
+                alt="Estudio Tapia Mattar & Asociados" 
+                className="h-28 w-auto mb-0"
+              />
             </div>
             <p className="text-white/70 leading-relaxed mb-4">
               Estudio jurídico comprometido con la excelencia legal y la defensa de sus derechos.
@@ -66,6 +66,8 @@ const Footer = () => {
                   <motion.a
                     key={index}
                     href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     whileHover={{ scale: 1.1, y: -2 }}
                     whileTap={{ scale: 0.95 }}
                     className="bg-white/10 p-2 rounded-lg hover:bg-law-gold/20 transition-colors duration-300"
@@ -101,20 +103,27 @@ const Footer = () => {
             </ul>
           </motion.div>
 
-          {/* Legal */}
+          {/* Practice Areas */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <h3 className="text-lg font-semibold mb-4 text-law-gold">Legal</h3>
+            <h3 className="text-lg font-semibold mb-4 text-law-gold">Áreas de Práctica</h3>
             <ul className="space-y-2">
-              {legalLinks.map((link, index) => (
+              {practiceAreas.map((link, index) => (
                 <li key={index}>
                   <a
                     href={link.href}
-                    className="text-white/70 hover:text-law-gold transition-colors duration-300"
+                    onClick={(e) => {
+                      e.preventDefault()
+                      const element = document.querySelector(link.href)
+                      if (element) {
+                        element.scrollIntoView({ behavior: 'smooth' })
+                      }
+                    }}
+                    className="text-white/70 hover:text-law-gold transition-colors duration-300 cursor-pointer"
                   >
                     {link.name}
                   </a>
@@ -134,26 +143,42 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-start gap-3">
                 <Mail className="w-5 h-5 text-law-gold flex-shrink-0 mt-0.5" />
-                <a 
-                  href="mailto:contacto@bogagod.com"
-                  className="text-white/70 hover:text-law-gold transition-colors duration-300"
-                >
-                  contacto@bogagod.com
-                </a>
+                <div>
+                  <a 
+                    href="mailto:oscartapiamattar@gmail.com"
+                    className="text-white/70 hover:text-law-gold transition-colors duration-300 block"
+                  >
+                    oscartapiamattar@gmail.com
+                  </a>
+                  <a 
+                    href="mailto:agugonfiad1999@gmail.com"
+                    className="text-white/70 hover:text-law-gold transition-colors duration-300 block"
+                  >
+                    agugonfiad1999@gmail.com
+                  </a>
+                </div>
               </li>
               <li className="flex items-start gap-3">
                 <Phone className="w-5 h-5 text-law-gold flex-shrink-0 mt-0.5" />
-                <a 
-                  href="tel:+34912345678"
-                  className="text-white/70 hover:text-law-gold transition-colors duration-300"
-                >
-                  +34 912 345 678
-                </a>
+                <div>
+                  <a 
+                    href="tel:+543855182227"
+                    className="text-white/70 hover:text-law-gold transition-colors duration-300 block"
+                  >
+                    385 5182227
+                  </a>
+                  <a 
+                    href="tel:+54385260426"
+                    className="text-white/70 hover:text-law-gold transition-colors duration-300 block"
+                  >
+                    385 260426
+                  </a>
+                </div>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-law-gold flex-shrink-0 mt-0.5" />
                 <span className="text-white/70">
-                  Calle Principal 123<br />Madrid, España
+                  9 de Julio 585<br />Loreto, Santiago del Estero<br />Argentina
                 </span>
               </li>
             </ul>
@@ -169,7 +194,7 @@ const Footer = () => {
           className="mt-12 pt-8 border-t border-white/10 text-center text-white/60 text-sm"
         >
           <p>
-            &copy; {currentYear} BogaGod Estudio Jurídico. Todos los derechos reservados.
+            &copy; {currentYear} Estudio Tapia Mattar & Asociados. <a href="https://www.instagram.com/alan.peralta99/" target="_blank" rel="noopener noreferrer"> by Alandev</a>.
           </p>
         </motion.div>
       </div>
