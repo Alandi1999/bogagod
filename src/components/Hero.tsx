@@ -75,7 +75,7 @@ const Hero = () => {
               onClick={handleContactClick}
               aria-label="Contactar ahora"
             >
-              Consulta
+              Consultar
             </Button>
             <Button 
               variant="outline"
@@ -84,20 +84,6 @@ const Hero = () => {
             >
               Conocer Más
             </Button>
-          </motion.div>
-
-          {/* Location Badge */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.8 }}
-            className="mt-16 text-center"
-          >
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
-              <span className="text-white/90 text-sm md:text-base">
-                📍 Loreto, Santiago del Estero, Argentina
-              </span>
-            </div>
           </motion.div>
         </div>
       </div>

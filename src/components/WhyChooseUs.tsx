@@ -39,7 +39,7 @@ const WhyChooseUs = () => {
     {
       icon: Trophy,
       title: 'Excelencia Profesional',
-      description: 'Reconocimientos y certificaciones que avalan nuestra calidad.'
+      description: 'Compromiso constante con la máxima calidad en cada servicio.'
     }
   ]
 

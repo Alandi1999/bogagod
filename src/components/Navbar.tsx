@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Scale } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import clsx from 'clsx'
 
 const Navbar = () => {
@@ -59,15 +59,11 @@ const Navbar = () => {
             whileHover={{ scale: 1.05 }}
             className="flex items-center gap-2 cursor-pointer"
           >
-            <div className={clsx(
-              'p-2 rounded-lg transition-colors duration-300',
-              isScrolled ? 'bg-black' : 'bg-law-gold'
-            )}>
-              <Scale className={clsx(
-                'w-6 h-6 transition-colors duration-300',
-                isScrolled ? 'text-law-gold' : 'text-black'
-              )} />
-            </div>
+            <img 
+              src="img/Logo_Balanza.png" 
+              alt="Tapia Mattar" 
+              className="h-10 w-auto"
+            />
             <span className={clsx(
               'text-xl font-bold transition-colors duration-300',
               isScrolled ? 'text-black' : 'text-white'

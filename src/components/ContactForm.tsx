@@ -21,7 +21,7 @@ const ContactForm = () => {
       name: 'Agustín González Fiad',
       mp: 'M.P. N° 4.851',
       title: 'Abogado',
-      phone: '385260426',
+      phone: '3856260426',
       image: 'img/Agustin_2.webp'
     }
   ]
@@ -166,7 +166,7 @@ const ContactForm = () => {
                         <p className="text-law-dark/70 mb-4">{lawyer.title}</p>
                       </div>
                       <a
-                        href={`https://wa.me/54${lawyer.phone}`}
+                        href={`https://wa.me/549${lawyer.phone}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105"
